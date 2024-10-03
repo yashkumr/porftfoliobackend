@@ -15,9 +15,11 @@ import projectRouter from "./routes/projectRouter.js";
 const app = express();
 dotenv.config();
 
+const allowedOrigins = [process.env.DASHBOARD_URL, process.env.PORTFOLIO_URL];
+
 app.use(
   cors({
-    origin: [process.env.PORTFOLIO_URL, process.env.DASHBOARD_URL],
+    origin: allowedOrigins,
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,
   })
